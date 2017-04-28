@@ -69,9 +69,9 @@
 
 static int decodeBinMessage(struct client *c, char *p);
 static int decodeHexMessage(struct client *c, char *hex);
-#ifdef ENABLE_WEBSERVER
+// #ifdef ENABLE_WEBSERVER
 static int handleHTTPRequest(struct client *c, char *p);
-#endif
+// #endif
 
 static void send_raw_heartbeat(struct net_service *service);
 static void send_beast_heartbeat(struct net_service *service);
@@ -262,10 +262,10 @@ void modesInitNet(void) {
     s = makeBeastInputService();
     serviceListen(s, Modes.net_bind_address, Modes.net_input_beast_ports);
 
-#ifdef ENABLE_WEBSERVER
+// #ifdef ENABLE_WEBSERVER
     s = serviceInit("HTTP server", NULL, NULL, "\r\n\r\n", handleHTTPRequest);
     serviceListen(s, Modes.net_bind_address, Modes.net_http_ports);
-#endif
+// #endif
 }
 //
 //=========================================================================
@@ -1150,9 +1150,9 @@ static char * appendStatsJson(char *p,
 
         p += snprintf(p, end-p, "]}");
 
-#ifdef ENABLE_WEBSERVER
+// #ifdef ENABLE_WEBSERVER
         p += snprintf(p, end-p, ",\"http_requests\":%u", st->http_requests);
-#endif
+// #endif
     }
 
     {
@@ -1344,7 +1344,7 @@ void writeJsonToFile(const char *file, char * (*generator) (const char *,int*))
 }
 
 
-#ifdef ENABLE_WEBSERVER
+// #ifdef ENABLE_WEBSERVER
 
 //
 //=========================================================================
@@ -1541,7 +1541,7 @@ static int handleHTTPRequest(struct client *c, char *p) {
     return !keepalive;
 }
 
-#endif
+// #endif
 
 //
 //=========================================================================

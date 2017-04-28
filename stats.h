@@ -95,10 +95,10 @@ struct stats {
     // total messages:
     uint32_t messages_total;
 
-#ifdef ENABLE_WEBSERVER
+// #ifdef ENABLE_WEBSERVER
     // network:
     uint32_t http_requests;
-#endif
+// #endif 
 
     // CPR decoding:
     unsigned int cpr_surface;
